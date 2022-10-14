@@ -90,6 +90,8 @@ int main() {
 
                 const std::string filename = st(i) + ext;
                 cv::Mat src = cv::imread(findPathWithKey(paths, methods[0]));
+
+                splitAndShowYCC(src);
 //        cv::imwrite("/Users/hrachayunts/Documents/Thesis/Colorization/Decolorization/images/Cadik/src/"
 //        + st(i) + ".png", src);
 
@@ -136,15 +138,15 @@ int main() {
 
 //            std::string jsonPath = prefix + "res-jsons/" + typeStr + ".json";
 //            std::string jsonPathSal = prefix + "res-jsons/" + typeStr + "_sal.json";
-            std::string jsonPathAt = prefix + "res-jsons/new" + mts[mm] + "_at_" + st(lay) + ".json";
+//            std::string jsonPathAt = prefix + "res-jsons/new" + mts[mm] + "_at_" + st(lay) + ".json";
 
 //            std::ofstream o(jsonPath);
 //            std::ofstream o1(jsonPathSal);
-            std::ofstream o2(jsonPathAt);
+//            std::ofstream o2(jsonPathAt);
 
 //            o << std::setw(4) << std::fixed << std::setprecision(8) << js << std::endl;
 //            o1 << std::setw(4) << std::fixed << std::setprecision(8) << jsSal << std::endl;
-            o2 << std::setw(4) << std::fixed << std::setprecision(8) << jsAt << std::endl;
+//            o2 << std::setw(4) << std::fixed << std::setprecision(8) << jsAt << std::endl;
         }
 //    }
 

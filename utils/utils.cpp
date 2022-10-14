@@ -1,7 +1,6 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 #include "utils.h"
-#include "gui/window_QT.h"
 
 cv::Mat concatHorizontal(std::vector<cv::Mat> images) {
     cv::Mat result;
@@ -171,9 +170,8 @@ void showHistogram(cv::Mat& image) {
 }
 
 void showAndWait(const std::string& window, const cv::Mat& img, int waitKey) {
-    CvMat cImage = cvMat(img);
-    cvShowImage(window.c_str(), &cImage);
-    cvWaitKey(waitKey);
+    cv::imshow(window, img);
+    cv::waitKey(waitKey);
 }
 
 // TODO: make one function
@@ -187,7 +185,8 @@ void splitAndShowYCC(const cv::Mat& img) {
     printImageInfo(channels[0], "Y");
     printImageInfo(channels[1], "Cr");
     printImageInfo(channels[2], "Cb");
-//    showAndWait("YCC", concatHorizontal(channels));
+
+    showAndWait("YCC", concatHorizontal(channels));
 }
 
 void splitAndShowLab(const cv::Mat& img) {
@@ -201,12 +200,7 @@ void splitAndShowLab(const cv::Mat& img) {
     printImageInfo(channels[1], "a");
     printImageInfo(channels[2], "b");
 
-    std::string path = "/Users/hrachayunts/Documents/Thesis/Colorization/Decolorization/images/Cadik/paper_images/3/boost/";
-    cv::imwrite(path + "L.png", channels[0]);
-    cv::imwrite(path + "a.png", channels[1]);
-    cv::imwrite(path + "b.png", channels[2]);
-
-//    showAndWait("Lab", concatHorizontal(channels));
+    showAndWait("Lab", concatHorizontal(channels));
 }
 
 void splitAndShowHSV(const cv::Mat& img) {
@@ -219,7 +213,7 @@ void splitAndShowHSV(const cv::Mat& img) {
     printImageInfo(channels[0], "H");
     printImageInfo(channels[1], "S");
     printImageInfo(channels[2], "V");
-//    showAndWait("HSV", concatHorizontal(channels));
+    showAndWait("HSV", concatHorizontal(channels));
 }
 
 cv::Mat negative(const cv::Mat& src) {
